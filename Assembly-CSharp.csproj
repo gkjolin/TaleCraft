@@ -47,12 +47,25 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Common.cs" />
+     <Compile Include="Assets\Scripts\DestroyRootGameObject.cs" />
+     <Compile Include="Assets\Scripts\Enums.cs" />
      <Compile Include="Assets\Scripts\GameObjectList.cs" />
+     <Compile Include="Assets\Scripts\Objects\PlayerObject.cs" />
+     <Compile Include="Assets\Scripts\Objects\WorldObject.cs" />
      <Compile Include="Assets\Scripts\Player\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Player\HUD.cs" />
+     <Compile Include="Assets\Scripts\Player\MinimapController.cs" />
+     <Compile Include="Assets\Scripts\Player\Mouse.cs" />
+     <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerNetworking.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerSync.cs" />
      <Compile Include="Assets\Scripts\Player\UserInput.cs" />
      <Compile Include="Assets\Scripts\ResourceManager.cs" />
+     <None Include="Assets\Materials\Projections\SelectedBuilding\SelectedBuilding.shader" />
+     <None Include="Assets\Materials\Projections\PlayerColor\PlayerColor.shader" />
+     <None Include="Assets\Materials\Projections\ConeProjector\ConeProjector.shader" />
+     <None Include="Assets\Materials\Projections\SelectedUnit\SelectedUnit.shader" />
+     <None Include="Assets\Materials\HUD\LineMaterial\Color blended.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

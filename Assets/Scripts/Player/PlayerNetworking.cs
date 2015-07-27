@@ -3,8 +3,9 @@ using System.Collections;
 using UnityEngine.Networking;
 
 public class PlayerNetworking : NetworkBehaviour {
-
-	[SerializeField] private Camera playerCam;
+	
+	[SerializeField] private Camera playCam;
+	[SerializeField] private Camera miniCam;
 	[SerializeField] private AudioListener playerAudio;
 
 	void Start() {
@@ -12,10 +13,16 @@ public class PlayerNetworking : NetworkBehaviour {
 			// Deactivate stuff
 			GameObject.Find ("Scene Camera").SetActive(false);
 
-			// Activate player stuff
+			// Enable scripts
 			transform.GetComponentInChildren<CameraController>().enabled = true;
+			transform.GetComponentInChildren<MinimapController>().enabled = true;
 			GetComponent<UserInput>().enabled = true;
-			playerCam.enabled = true;
+			GetComponent<Mouse>().enabled = true;
+			GetComponent<HUD>().enabled = true;
+			
+			// Activate player elemts
+			playCam.enabled = true;
+			miniCam.enabled = true;
 			playerAudio.enabled = true;
 		}
 	}
