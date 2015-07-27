@@ -1,0 +1,5 @@
+2015-07-27 12:22:57,170 [1] DEBUG NetworkManager [(null)] - Starting Server
+2015-07-27 12:22:57,204 [1] DEBUG NetworkManager [(null)] - startServer called
+2015-07-27 12:22:57,290 [1] DEBUG NetworkManager [(null)] - Server initialized
+2015-07-27 12:22:57,303 [1] DEBUG NetworkManager [(null)] - Expected player count : 2
+2015-07-27 12:22:58,124 [1] DEBUG NetworkManager [(null)] - Master Server Event: RegistrationSucceeded
