@@ -1,14 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Lockstep\Code\Lockstep\LockStepManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\UserInput.cs">
     <Files>
-      <File FileName="Assets\Scripts\Lockstep\Code\SceneManager.cs" Line="26" Column="19" />
-      <File FileName="Assets\Scripts\Player\PlayerNetworking.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\CameraController.cs" Line="18" Column="51" />
-      <File FileName="Assets\Scripts\Player\UserInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\CameraController.cs" Line="10" Column="2" />
       <File FileName="Assets\Scripts\Player\PlayerSync.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Lockstep\Code\Lockstep\IHasGameFrame.cs" Line="28" Column="24" />
-      <File FileName="Assets\Scripts\Lockstep\Code\Lockstep\LockStepManager.cs" Line="98" Column="31" />
+      <File FileName="Assets\Scripts\Player\PlayerNetworking.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\UserInput.cs" Line="21" Column="24" />
+      <File FileName="Assets\Scripts\ResourceManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameObjectList.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Common.cs" Line="12" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

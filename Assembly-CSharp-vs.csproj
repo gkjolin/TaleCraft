@@ -46,24 +46,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Lockstep\Code\Actions\Action.cs" />
-     <Compile Include="Assets\Scripts\Lockstep\Code\Actions\BinarySerialization.cs" />
-     <Compile Include="Assets\Scripts\Lockstep\Code\Actions\NoAction.cs" />
-     <Compile Include="Assets\Scripts\Lockstep\Code\Lockstep\ConfirmedActions.cs" />
-     <Compile Include="Assets\Scripts\Lockstep\Code\Lockstep\IHasGameFrame.cs" />
-     <Compile Include="Assets\Scripts\Lockstep\Code\Lockstep\LockStepManager.cs" />
-     <Compile Include="Assets\Scripts\Lockstep\Code\Lockstep\PendingActions.cs" />
-     <Compile Include="Assets\Scripts\Lockstep\Code\Lockstep\RollingAverage.cs" />
-     <Compile Include="Assets\Scripts\Lockstep\Code\Networking\NetworkHostMessages.cs" />
-     <Compile Include="Assets\Scripts\Lockstep\Code\Networking\NetworkManager.cs" />
-     <Compile Include="Assets\Scripts\Lockstep\Code\SceneManager.cs" />
-     <Compile Include="Assets\Scripts\Lockstep\Code\log4net\CWDFileAppender.cs" />
-     <Compile Include="Assets\Scripts\Lockstep\Code\log4net\Unity3DConsoleAppender.cs" />
+     <Compile Include="Assets\Scripts\Common.cs" />
+     <Compile Include="Assets\Scripts\GameObjectList.cs" />
      <Compile Include="Assets\Scripts\Player\CameraController.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerNetworking.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerSync.cs" />
      <Compile Include="Assets\Scripts\Player\UserInput.cs" />
-     <None Include="Assets\Scripts\Lockstep\Resources\logConfig.txt" />
+     <Compile Include="Assets\Scripts\ResourceManager.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -72,9 +61,6 @@
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
- </Reference>
- <Reference Include="log4net">
- <HintPath>C:/git/TaleCraft/Assets/Scripts/Lockstep/Code/log4net/log4net.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

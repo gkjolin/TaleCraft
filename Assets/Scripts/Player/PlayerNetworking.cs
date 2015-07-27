@@ -13,7 +13,7 @@ public class PlayerNetworking : NetworkBehaviour {
 			GameObject.Find ("Scene Camera").SetActive(false);
 
 			// Activate player stuff
-			GetComponent<CameraController>().enabled = true;
+			transform.GetComponentInChildren<CameraController>().enabled = true;
 			GetComponent<UserInput>().enabled = true;
 			playerCam.enabled = true;
 			playerAudio.enabled = true;
