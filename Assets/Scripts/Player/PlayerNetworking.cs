@@ -13,6 +13,9 @@ public class PlayerNetworking : NetworkBehaviour {
 			// Deactivate stuff
 			GameObject.Find ("Scene Camera").SetActive(false);
 
+			// Load the map
+
+
 			// Enable scripts
 			transform.GetComponentInChildren<CameraController>().enabled = true;
 			transform.GetComponentInChildren<MinimapController>().enabled = true;

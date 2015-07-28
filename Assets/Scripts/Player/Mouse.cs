@@ -169,15 +169,15 @@ public class Mouse : MonoBehaviour {
 										DeselectGameobjectsIfSelected ();
 									}
 									
-									// Set the selected projection
-									GameObject selectedObj = hit.collider.transform.FindChild ("Selected").gameObject;
-									selectedObj.SetActive (true);
-									
+//									// Set the selected projection
+//									GameObject selectedObj = hit.collider.transform.FindChild ("Selected").gameObject;
+//									selectedObj.SetActive (true);
+//									
 									// Add the unit to the arraylist
 									currentlySelectedUnits.Add (hit.collider.transform.gameObject);
 
 									// Change the unit selected value to true
-									hit.collider.transform.gameObject.GetComponent<PlayerObject> ().selected = true;
+									hit.collider.transform.gameObject.GetComponent<PlayerObject> ().SetSelected(true);
 									
 								} else {
 									// Unit is already in the currently selected units arraylist, remove the unit when shift is held down
@@ -186,15 +186,15 @@ public class Mouse : MonoBehaviour {
 									} else {
 										DeselectGameobjectsIfSelected ();
 										
-										// Set the selected projection
-										GameObject selectedObj = hit.collider.transform.FindChild ("Selected").gameObject;
-										selectedObj.SetActive (true);
-										
+//										// Set the selected projection
+//										GameObject selectedObj = hit.collider.transform.FindChild ("Selected").gameObject;
+//										selectedObj.SetActive (true);
+//										
 										// Add the unit to the arraylist
 										currentlySelectedUnits.Add (hit.collider.transform.gameObject);
 
 										// Change the unit selected value to true
-										hit.collider.transform.gameObject.GetComponent<PlayerObject> ().selected = true;
+										hit.collider.transform.gameObject.GetComponent<PlayerObject> ().SetSelected(true);
 									}
 									
 								}
@@ -278,16 +278,17 @@ public class Mouse : MonoBehaviour {
 			for(int i = 0; i < unitsOnScreen.Count; i++) {
 				GameObject unitObj = unitsOnScreen[i] as GameObject;
 				PlayerObject unitScript = unitObj.GetComponent<PlayerObject>();
-				GameObject selectedObj = unitObj.transform.FindChild("Selected").gameObject;
+//				GameObject selectedObj = unitObj.transform.FindChild("Selected").gameObject;
 				
-				if(!UnitAlreadyInDraggedUnits(unitObj) && player.Equals(unitScript.player)) {
+				if(!UnitAlreadyInDraggedUnits(unitObj) && unitScript.player.isLocalPlayer) {
 					if(UnitInsideDrag(unitScript.screenPos)) {
-						selectedObj.SetActive(true);
+//						selectedObj.SetActive(true);
+						// Unit is set as selected in PutDraggedUnitsInCurrentlySelectedUnits
 						unitsInDrag.Add (unitObj);
 					} else {
 						// Unit is not in drag, remove the selecte graphic
 						if(!UnitAlreadyInCurrentlySelectedUnits(unitObj)){
-							selectedObj.SetActive(false);
+							unitScript.SetSelected(false);
 						}
 					}
 				}
@@ -367,8 +368,8 @@ public class Mouse : MonoBehaviour {
 		if (currentlySelectedUnits.Count > 0) {
 			for (int i = 0; i < currentlySelectedUnits.Count; i++) {
 				GameObject arrayListUnit = currentlySelectedUnits[i] as GameObject;
-				arrayListUnit.transform.FindChild ("Selected").gameObject.SetActive(false);
-				arrayListUnit.GetComponent<PlayerObject>().selected = false;
+//				arrayListUnit.transform.FindChild ("Selected").gameObject.SetActive(false);
+				arrayListUnit.GetComponent<PlayerObject>().SetSelected(false);
 			}
 			currentlySelectedUnits.Clear ();
 		}
@@ -393,8 +394,8 @@ public class Mouse : MonoBehaviour {
 				GameObject arrayListUnit = currentlySelectedUnits[i] as GameObject;
 				if(arrayListUnit == unit) {
 					currentlySelectedUnits.RemoveAt(i);
-					arrayListUnit.transform.FindChild("Selected").gameObject.SetActive(false);
-					arrayListUnit.GetComponent<PlayerObject>().selected = false;
+//					arrayListUnit.transform.FindChild("Selected").gameObject.SetActive(false);
+					arrayListUnit.GetComponent<PlayerObject>().SetSelected(false);
 				}
 			}
 		}
@@ -456,7 +457,7 @@ public class Mouse : MonoBehaviour {
 				// if unit is not already in currentlySelectedUnits, add it!
 				if(!UnitAlreadyInCurrentlySelectedUnits(unitObj)){
 					currentlySelectedUnits.Add (unitObj);
-					unitObj.GetComponent<PlayerObject>().selected = true;
+					unitObj.GetComponent<PlayerObject>().SetSelected(true);
 				} else if (Common.ShiftKeysDown() && UnitAlreadyInCurrentlySelectedUnits(unitObj)) {
 					// Remove the already selected unit from the selection set
 					RemoveUnitFromCurrentlySelectedUnits(unitObj);

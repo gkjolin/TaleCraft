@@ -5,7 +5,7 @@ using RTS;
 
 public class Common : MonoBehaviour {
 
-	private static Terrain worldTerrain = GameObject.Find ("Ground").GetComponent<Terrain> ();
+	private static Terrain worldTerrain = GameObject.Find ("Ground").GetComponentInChildren<Terrain> ();
 	private static Dictionary<Color, Texture2D> staticRectTexture2D = new Dictionary<Color, Texture2D> ();
 	private static Dictionary<Color, GUIStyle> staticRectGUIStyle = new Dictionary<Color, GUIStyle> ();
 

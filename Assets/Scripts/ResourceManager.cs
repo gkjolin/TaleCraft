@@ -3,32 +3,32 @@ using System.Collections;
 
 namespace RTS {
 	public static class ResourceManager {
-//
-//		// Game object list instantiator
-//		private static GameObjectList gameObjectList;
-//		public static void SetGameObjectList(GameObjectList objectList) {
-//			gameObjectList = objectList;
-//		}
-//		
-//		public static GameObject GetPlayer() {
-//			return gameObjectList.GetPlayer();
-//		}
-//
-//		public static GameObject GetBuilding(string name) {
-//			return gameObjectList.GetBuilding(name);
-//		}
-//		
-//		public static GameObject GetUnit(string name) {
-//			return gameObjectList.GetUnit(name);
-//		}
-//		
-//		public static GameObject GetWorldObject(string name) {
-//			return gameObjectList.GetWorldObject(name);
-//		}
-//		
-//		public static Texture2D GetBuildImage(string name) {
-//			return gameObjectList.GetBuildImage(name);
-//		}
+
+		// Game object list instantiator
+		private static GameObjectList gameObjectList;
+		public static void SetGameObjectList(GameObjectList objectList) {
+			gameObjectList = objectList;
+		}
+		
+		public static GameObject GetPlayer() {
+			return gameObjectList.GetPlayer();
+		}
+
+		public static GameObject GetBuilding(string name) {
+			return gameObjectList.GetBuilding(name);
+		}
+		
+		public static GameObject GetUnit(string name) {
+			return gameObjectList.GetUnit(name);
+		}
+		
+		public static GameObject GetWorldObject(string name) {
+			return gameObjectList.GetWorldObject(name);
+		}
+		
+		public static Texture2D GetBuildImage(string name) {
+			return gameObjectList.GetBuildImage(name);
+		}
 
 		// Mouse variables
 		public static float ClickTolerance { get { return 0.8f; } }

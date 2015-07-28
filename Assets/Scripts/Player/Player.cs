@@ -10,6 +10,7 @@ public class Player : NetworkBehaviour {
 	public Camera playCam;
 	public Camera miniCam;
 	public Mouse mouse;
+	public HUD hud;
 	public CameraController cameraControl;
 	public MinimapController minimapControl;
 
@@ -67,16 +68,16 @@ public class Player : NetworkBehaviour {
 		resources[type] += amount;
 	}
 
-//	public void AddUnit(string unitName, Vector3 spawnPoint, Vector3 rallyPoint, Quaternion rotation) {
-//		Units units = GetComponentInChildren< Units >();
-//		GameObject newUnit = (GameObject)Instantiate(ResourceManager.GetUnit(unitName), spawnPoint, rotation);
-//		newUnit.transform.parent = units.transform;
-//
+	public void AddUnit(string unitName, Vector3 spawnPoint, Vector3 rallyPoint, Quaternion rotation) {
+		Units units = GetComponentInChildren< Units >();
+		GameObject newUnit = (GameObject)Instantiate(ResourceManager.GetUnit(unitName), spawnPoint, rotation);
+		newUnit.transform.parent = units.transform;
+
 //		// Have the unit move to the rally point
 //		if (spawnPoint != rallyPoint) {
 //			Unit unitScript = newUnit.GetComponent< Unit >();
 //			unitScript.MoveToLocation (rallyPoint);
 //		}
-//	}
+	}
 
 }

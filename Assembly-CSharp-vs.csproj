@@ -46,11 +46,15 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Buildings\Base.cs" />
+     <Compile Include="Assets\Scripts\Buildings\Building.cs" />
+     <Compile Include="Assets\Scripts\Buildings\Buildings.cs" />
      <Compile Include="Assets\Scripts\Common.cs" />
      <Compile Include="Assets\Scripts\DestroyRootGameObject.cs" />
      <Compile Include="Assets\Scripts\Enums.cs" />
-     <Compile Include="Assets\Scripts\GameObjectList.cs" />
+     <Compile Include="Assets\Scripts\Objects\GameObjectList.cs" />
      <Compile Include="Assets\Scripts\Objects\PlayerObject.cs" />
+     <Compile Include="Assets\Scripts\Objects\RallyPoint.cs" />
      <Compile Include="Assets\Scripts\Objects\WorldObject.cs" />
      <Compile Include="Assets\Scripts\Player\CameraController.cs" />
      <Compile Include="Assets\Scripts\Player\HUD.cs" />
@@ -61,6 +65,9 @@
      <Compile Include="Assets\Scripts\Player\PlayerSync.cs" />
      <Compile Include="Assets\Scripts\Player\UserInput.cs" />
      <Compile Include="Assets\Scripts\ResourceManager.cs" />
+     <Compile Include="Assets\Scripts\Units\Unit.cs" />
+     <Compile Include="Assets\Scripts\Units\Units.cs" />
+     <Compile Include="Assets\Scripts\Units\Worker.cs" />
      <None Include="Assets\Materials\Projections\SelectedBuilding\SelectedBuilding.shader" />
      <None Include="Assets\Materials\Projections\PlayerColor\PlayerColor.shader" />
      <None Include="Assets\Materials\Projections\ConeProjector\ConeProjector.shader" />

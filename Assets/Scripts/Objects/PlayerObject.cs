@@ -12,9 +12,8 @@ public class PlayerObject : WorldObject {
 	// For UserInput.cs
 	public Vector2 screenPos;
 	public bool onScreen;
-	public bool selected = false;
-
 	public bool isVisible = false;
+	protected bool selected = false;
 	
 	// For minimap
 	public int mapPixelSize = 4;
@@ -39,7 +38,7 @@ public class PlayerObject : WorldObject {
 			// track the screen position
 			screenPos = player.playCam.WorldToScreenPoint(this.transform.position);
 			
-			// if withing the screen space
+			// if within the screen space
 			if(player.mouse.UnitsWithinScreenSpace(screenPos)) {
 				// and not already added to unitsOnScreen, add it!
 				if(!onScreen) {
@@ -49,7 +48,7 @@ public class PlayerObject : WorldObject {
 			} else {
 				// Unit is not in screen space
 				
-				// remove if previously on the screen
+				// Remove if previously on the screen
 				if(onScreen) {
 					player.mouse.RemoveFromOnScreenUnits(this.gameObject);
 				}
@@ -90,7 +89,7 @@ public class PlayerObject : WorldObject {
 	
 	public override void ObjectGotRightClicked(Player byPlayer) {
 		base.ObjectGotRightClicked (byPlayer);
-		if (player.Equals (byPlayer)) {
+		if (player.isLocalPlayer) {
 			// A player right-clicked his own unit
 			Debug.Log("A player right-clicked his own unit");
 		} else {
@@ -105,6 +104,18 @@ public class PlayerObject : WorldObject {
 	
 	public override void PerformAction(string actionToPerform) {
 		base.PerformAction (actionToPerform);
+	}
+
+	// Helper function to set the selected status of a unit
+	public void SetSelected(bool isSelected) {
+		// Only allow the local player to set the selected status
+		if (player.isLocalPlayer) {
+			this.selected = isSelected;
+			transform.FindChild ("Selected").gameObject.SetActive(isSelected);
+		} else {
+			this.selected = false;
+			transform.FindChild ("Selected").gameObject.SetActive(false);
+		}
 	}
 	
 
