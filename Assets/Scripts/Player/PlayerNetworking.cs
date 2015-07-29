@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+//using Pathfinding;
 using UnityEngine.Networking;
 
 public class PlayerNetworking : NetworkBehaviour {
@@ -27,6 +28,9 @@ public class PlayerNetworking : NetworkBehaviour {
 			playCam.enabled = true;
 			miniCam.enabled = true;
 			playerAudio.enabled = true;
+
+			// Recalculate paths
+//			AstarPath.active.Scan();
 		}
 	}
 
