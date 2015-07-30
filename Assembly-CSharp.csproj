@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\Common.cs" />
      <Compile Include="Assets\Scripts\DestroyRootGameObject.cs" />
      <Compile Include="Assets\Scripts\Enums.cs" />
+     <Compile Include="Assets\Scripts\Map\TileMap.cs" />
      <Compile Include="Assets\Scripts\Objects\GameObjectList.cs" />
      <Compile Include="Assets\Scripts\Objects\PlayerObject.cs" />
      <Compile Include="Assets\Scripts\Objects\RallyPoint.cs" />
