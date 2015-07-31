@@ -5,44 +5,63 @@ using System.Collections;
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(MeshCollider))]
-public class TileMap : MonoBehaviour {
+public class TGMap : MonoBehaviour {
 	
 	// Number of tiles
 	[SerializeField] private int sizeX;
 	[SerializeField] private int sizeZ;
 	[SerializeField] private float tileSize;
+	
+	[SerializeField] private Texture2D terrainTiles;
+	[SerializeField] private int tileResolution;
 
 	// Use this for initialization
 	void Start () {
 		BuildMesh ();
 	}
 
-	void BuildTexture() {
+	Color[][] ChopUpTiles() {
+		int numTilesPerRow = terrainTiles.width / tileResolution;
+		int numRows = terrainTiles.height / tileResolution;
+
+		Color[][] tiles = new Color[numTilesPerRow * numRows][];
 		
-		int textWidth = 10;
-		int textHeight = 10;
+		for (int y = 0; y < numRows; y++) {
+			for (int x = 0; x < numTilesPerRow; x++) {
+				tiles[y*numTilesPerRow + x] = terrainTiles.GetPixels(x*tileResolution, y*tileResolution, tileResolution, tileResolution);
+			}
+		}
+
+		return tiles;
+	}
+
+	void BuildTexture() {
+
+		TDMap map = new TDMap (sizeX, sizeZ);
+
+		int textWidth = sizeX * tileResolution;
+		int textHeight = sizeZ * tileResolution;
 
 		// Create a new texture 10 x 10 px
 		Texture2D texture = new Texture2D (textWidth, textHeight);
+
+		Color[][] tiles = ChopUpTiles ();
 		
-		for (int y = 0; y < textHeight; y++) {
-			for (int x = 0; x < textWidth; x++) {
-				Color c = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
-				texture.SetPixel(x, y, c);
+		for (int y = 0; y < sizeZ; y++) {
+			for (int x = 0; x < sizeX; x++) {
+				Color[] p = tiles[map.GetTileAt(x, y)];
+				texture.SetPixels(x*tileResolution, y*tileResolution, tileResolution, tileResolution, p);
 			}
 		}
 
 		// For sharp edges
 		texture.filterMode = FilterMode.Point;
-//		texture.filterMode = FilterMode.Bilinear;
-
 		texture.wrapMode = TextureWrapMode.Clamp;
 
 		// Apply the textures
 		texture.Apply ();
 
 		MeshRenderer mr = GetComponent<MeshRenderer> ();
-
 		mr.sharedMaterials [0].mainTexture = texture;
 
 	}
@@ -68,9 +87,11 @@ public class TileMap : MonoBehaviour {
 		int x, z;
 		for (z = 0; z < vSizeZ; z++) {
 			for (x = 0; x < vSizeX; x++) {
-				vertices[ z * vSizeX + x ] = new Vector3( x * tileSize, 0, z * tileSize );
+				vertices[ z * vSizeX + x ] = new Vector3( x * tileSize, 0, -z * tileSize );
 				normals [ z * vSizeX + x ] = Vector3.up;
-				uv      [ z * vSizeX + x ] = new Vector2( (float) x / sizeX, (float) z / sizeZ );
+				uv      [ z * vSizeX + x ] = new Vector2( (float) x / sizeX, 1f - (float) z / sizeZ );
+
+				// TODO: Fix upside down textures
 			}
 		}
 		
@@ -80,12 +101,12 @@ public class TileMap : MonoBehaviour {
 				int triOffset = squareIndex * 6;
 
 				triangles[ triOffset + 0 ] = z * vSizeX + x +          0;
-				triangles[ triOffset + 1 ] = z * vSizeX + x + vSizeX + 0;
-				triangles[ triOffset + 2 ] = z * vSizeX + x + vSizeX + 1;
+				triangles[ triOffset + 2 ] = z * vSizeX + x + vSizeX + 0;
+				triangles[ triOffset + 1 ] = z * vSizeX + x + vSizeX + 1;
 				
 				triangles[ triOffset + 3 ] = z * vSizeX + x +          0;
-				triangles[ triOffset + 4 ] = z * vSizeX + x + vSizeX + 1;
-				triangles[ triOffset + 5 ] = z * vSizeX + x +          1;
+				triangles[ triOffset + 5 ] = z * vSizeX + x + vSizeX + 1;
+				triangles[ triOffset + 4 ] = z * vSizeX + x +          1;
 			}
 		}
 		
@@ -105,7 +126,7 @@ public class TileMap : MonoBehaviour {
 		mc.sharedMesh = mesh;
 
 		// Move the tileMap to center position
-		transform.position = new Vector3 ((float) - (sizeX * tileSize) / 2, 0, (float) - (sizeZ * tileSize) / 2);
+		transform.position = new Vector3 ((float) - (sizeX * tileSize) / 2, 0, (float) (sizeZ * tileSize) / 2);
 
 		// Add textures to the grid
 		BuildTexture ();
